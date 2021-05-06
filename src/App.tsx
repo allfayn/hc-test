@@ -40,11 +40,12 @@ const fn = async function (args: useFetchProps) {
 function App() {
   const [search, setSearch] = useState("");
   const [url, setRepo] = useState<string>("");
+  const searchFn = fn;
   const { data, error, loading } = useFetch<useFetchProps, ChartData>({
     args: {
       url: url,
     },
-    fn,
+    fn: searchFn,
   });
   const callSearch = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -52,8 +53,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app-header">
         <p>
           <label>author/repo:</label>
           <input
